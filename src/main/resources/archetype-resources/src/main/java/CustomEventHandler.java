@@ -1,12 +1,9 @@
 package $package;
 
-import org.wso2.carbon.identity.base.IdentityRuntimeException;
-import org.wso2.carbon.identity.core.handler.InitConfig;
+import org.wso2.carbon.identity.core.bean.context.MessageContext;
+import org.wso2.carbon.identity.event.IdentityEventException;
 import org.wso2.carbon.identity.event.event.Event;
 import org.wso2.carbon.identity.event.handler.AbstractEventHandler;
-import org.wso2.carbon.identity.event.IdentityEventException;
-import org.wso2.carbon.identity.governance.common.IdentityConnectorConfig;
-import org.wso2.carbon.identity.password.policy.internal.IdentityPasswordPolicyServiceDataHolder;
 
 public class CustomEventHandler extends AbstractEventHandler {
 
@@ -28,7 +25,6 @@ public class CustomEventHandler extends AbstractEventHandler {
          * 09. PRE_UPDATE_CREDENTIAL_BY_ADMIN
          * 10. POST_UPDATE_CREDENTIAL_BY_ADMIN
          * 
-         * for more check on here
          */
     }
 
@@ -39,10 +35,8 @@ public class CustomEventHandler extends AbstractEventHandler {
     }
 
     @Override
-    public void init(InitConfig configuration) throws IdentityRuntimeException {
-        // TODO: register handler as a service when and if using `IdentityConnectorConfig`
-        super.init(configuration);
-        IdentityPasswordPolicyServiceDataHolder.getInstance().getBundleContext()
-                .registerService(IdentityConnectorConfig.class.getName(), this, null);
+    public int getPriority(MessageContext messageContext) {
+        // TODO: change the priority
+        return 50;
     }
 }
