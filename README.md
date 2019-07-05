@@ -19,3 +19,14 @@ mvn archetype:generate  -DarchetypeGroupId=com.athiththan.wso2      \
                         -DgroupId=<Group ID>                        \
                         -DartifactId=<Artifact ID>
 ```
+
+Use the following command to skip the `interactive-mode` when generating maven projects
+
+```shell
+mvn archetype:generate  -DarchetypeGroupId=com.athiththan.wso2      \
+                        -DarchetypeArtifactId=wso2-event-handlers   \
+                        -DinteractiveMode=false                     \
+                        -DarchetypeVersion=1.0.0                    \
+                        -DgroupId=<Group ID>                        \
+                        -DartifactId=<Artifact ID>
+```
