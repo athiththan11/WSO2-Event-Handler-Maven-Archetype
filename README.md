@@ -2,11 +2,15 @@
 
 Maven Archetype for WSO2 Event Handlers. Use the following maven archetype to generate maven projects to implement WSO2 related event handlers for WSO2 IS Services.
 
+#### `v2.0.0`
+
+Now supports generating boilerplates with or without `IdentityConnectorConfig`. Use `-DIdentityConnectorConfig` flag and provide `Y or N` to specify the generation of boilerplate with or without connector configurations.
+
 ```xml
 <dependency>
     <groupId>com.athiththan.wso2</groupId>
     <artifactId>wso2-event-handlers</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
@@ -15,9 +19,10 @@ Maven Archetype for WSO2 Event Handlers. Use the following maven archetype to ge
 ```shell
 mvn archetype:generate  -DarchetypeGroupId=com.athiththan.wso2      \
                         -DarchetypeArtifactId=wso2-event-handlers   \
-                        -DarchetypeVersion=1.0.0                    \
+                        -DarchetypeVersion=2.0.0                    \
                         -DgroupId=<Group ID>                        \
-                        -DartifactId=<Artifact ID>
+                        -DartifactId=<Artifact ID>                  \
+                        -DIdentityConnectorConfig=<Y || N>
 ```
 
 Use the following command to skip the `interactive-mode` when generating maven projects
@@ -26,7 +31,8 @@ Use the following command to skip the `interactive-mode` when generating maven p
 mvn archetype:generate  -DarchetypeGroupId=com.athiththan.wso2      \
                         -DarchetypeArtifactId=wso2-event-handlers   \
                         -DinteractiveMode=false                     \
-                        -DarchetypeVersion=1.0.0                    \
+                        -DarchetypeVersion=2.0.0                    \
                         -DgroupId=<Group ID>                        \
-                        -DartifactId=<Artifact ID>
+                        -DartifactId=<Artifact ID>                  \
+                        -DIdentityConnectorConfig=<Y || N>
 ```

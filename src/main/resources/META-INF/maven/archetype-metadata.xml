@@ -30,4 +30,10 @@ under the License.
 			</includes>
 		</fileSet>
 	</fileSets>
+
+	<requiredProperties>
+		<requiredProperty key="IdentityConnectorConfig">
+			<defaultValue>Y</defaultValue>
+		</requiredProperty>
+	</requiredProperties>
 </archetype-descriptor>

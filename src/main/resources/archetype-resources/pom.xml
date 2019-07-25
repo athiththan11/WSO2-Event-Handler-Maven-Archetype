@@ -18,18 +18,21 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.wso2.carbon.identity.framework</groupId>
 			<artifactId>org.wso2.carbon.identity.mgt</artifactId>
 			<version>5.13.4</version>
 		</dependency>
+		#if ($IdentityConnectorConfig.toLowerCase() == "y")
 
-		<!-- identity governance dependency - uncomment and use if needed -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.wso2.carbon.identity.governance</groupId>
 			<artifactId>org.wso2.carbon.identity.governance</artifactId>
 			<version>1.1.15</version>
-		</dependency> -->
+		</dependency>
+		#end
+	
 	</dependencies>
 
 	<repositories>
@@ -91,6 +94,8 @@
 						<Import-Package>
                             *; resolution:=optional
 						</Import-Package>
+
+						<!-- FIXME: remove DynamicImport and add related packages in Import-Package -->
 						<DynamicImport-Package>*</DynamicImport-Package>
 					</instructions>
 				</configuration>

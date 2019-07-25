@@ -1,11 +1,23 @@
 package $package;
 
+#if($IdentityConnectorConfig.toLowerCase() == "y")
+import java.util.Map;
+import java.util.Properties;
+
+#end
 import org.wso2.carbon.identity.core.bean.context.MessageContext;
 import org.wso2.carbon.identity.event.IdentityEventException;
 import org.wso2.carbon.identity.event.event.Event;
 import org.wso2.carbon.identity.event.handler.AbstractEventHandler;
+#if($IdentityConnectorConfig.toLowerCase() == "y")
 
-public class CustomEventHandler extends AbstractEventHandler {
+import org.wso2.carbon.identity.base.IdentityRuntimeException;
+import org.wso2.carbon.identity.core.handler.InitConfig;
+import org.wso2.carbon.identity.governance.IdentityGovernanceException;
+import org.wso2.carbon.identity.governance.common.IdentityConnectorConfig;
+#end
+
+public class CustomEventHandler extends AbstractEventHandler #if($IdentityConnectorConfig.toLowerCase() == "y")implements IdentityConnectorConfig #end{
 
     @Override
     public void handleEvent(Event event) throws IdentityEventException {
@@ -39,4 +51,67 @@ public class CustomEventHandler extends AbstractEventHandler {
         // TODO: change the priority
         return 50;
     }
+    #if($IdentityConnectorConfig == "Y" || $IdentityConnectorConfig == "y")
+
+    @Override
+    public String getCategory() {
+        // TODO: change the category name
+        return "customeventhandler";
+    }
+
+    @Override
+    public Properties getDefaultPropertyValues(String arg0) throws IdentityGovernanceException {
+        // TODO: implement body
+        return null;
+    }
+
+    @Override
+    public Map<String, String> getDefaultPropertyValues(String[] arg0, String arg1) throws IdentityGovernanceException {
+        // TODO: implement body
+        return null;
+    }
+
+    @Override
+    public String getFriendlyName() {
+        // TODO: change the friendly name
+        return "customeventhandler";
+    }
+
+    @Override
+    public int getOrder() {
+        // TODO: change order
+        return 0;
+    }
+
+    @Override
+    public Map<String, String> getPropertyDescriptionMapping() {
+        // TODO: implement body
+        return null;
+    }
+
+    @Override
+    public Map<String, String> getPropertyNameMapping() {
+        // TODO: implement body
+        return null;
+    }
+
+    @Override
+    public String[] getPropertyNames() {
+        // TODO: implement body
+        return null;
+    }
+
+    @Override
+    public String getSubCategory() {
+        return "DEFAULT";
+    }
+
+    @Override
+    public void init(InitConfig configuration) throws IdentityRuntimeException {
+        super.init(configuration);
+        
+        // TODO: register Identity Connector Config service
+    }
+    #end
+
 }

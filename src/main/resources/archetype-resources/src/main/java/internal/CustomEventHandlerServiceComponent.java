@@ -9,6 +9,9 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.wso2.carbon.identity.event.handler.AbstractEventHandler;
+#if($IdentityConnectorConfig.toLowerCase() == "y")
+import org.wso2.carbon.identity.governance.IdentityGovernanceService;
+#end
 
 @Component(name = "${package}.internal.component", service = CustomEventHandlerServiceComponent.class, immediate = true)
 public class CustomEventHandlerServiceComponent {
@@ -31,4 +34,15 @@ public class CustomEventHandlerServiceComponent {
     protected void deactivate(ComponentContext context) {
         // TODO: deactivate
     }
+    #if($IdentityConnectorConfig.toLowerCase() == "y")
+
+    protected void unsetIdentityGovernanceService(IdentityGovernanceService idpManager) {
+        CustomEventHandlerServiceDataHolder.getInstance().setIdentityGovernanceService(null);
+    }
+
+    protected void setIdentityGovernanceService(IdentityGovernanceService idpManager) {
+        CustomEventHandlerServiceDataHolder.getInstance().setIdentityGovernanceService(idpManager);
+    }
+    #end
+
 }
