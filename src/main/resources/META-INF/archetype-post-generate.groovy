@@ -10,4 +10,12 @@ if(!"y".equals(request.properties['IdentityConnectorConfig'].toLowerCase())) {
     // delete ServiceDataHolder component
     Path serviceDataHolder = srcDir.resolve("internal/CustomEventHandlerServiceDataHolder.java")
     Files.deleteIfExists serviceDataHolder
+
+    // delete exception directory
+    def exceptionDir = new File(srcDir.toString() + '/exception')
+    exceptionDir.deleteDir()
+
+    // delete constant directory
+    def constantDir = new File(srcDir.toString() + '/constant')
+    constantDir.deleteDir()
 }
